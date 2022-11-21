@@ -24,6 +24,7 @@ pipeline {
                     remote.name = "ansible-server"
                     remote.host = "3.93.11.42"
                     remote.allowAnyHosts = true
+                    remote.user = "ubuntu"
                     
 
 
