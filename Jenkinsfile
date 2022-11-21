@@ -1,38 +1,19 @@
-def gv
-
 pipeline {
     agent any
     stages {
-        stage("init") {
+        stage("copy files to ansible server") {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    echo "copying all neccessary files to ansible control node"
+                    sshagent(['ansible-server-key']){
+                        sh "scp -o StrictHostKeyChecking=no ansible/* ubuntu@3.93.11.42:/home/ubuntu "
+
+                        withCredentials([sshUserPrivateKey(credentialsId:"ec2-server -key", keyFileVariable: 'keyfile','username')]){
+                            sh "scp -o ${keyfile} ubuntu@3.93.11.42:/home/ubuntu/morrowindabyss-key-virginia-us-east-1.pem"
+                        }
+                    }
                 }
             }
         }
-        stage("build jar") {
-            steps {
-                script {
-                    echo "building jar"
-                    //gv.buildJar()
-                }
-            }
-        }
-        stage("build image") {
-            steps {
-                script {
-                    echo "building image"
-                    //gv.buildImage()
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                script {
-                    echo "deploying"
-                    //gv.deployApp()
-                }
-            }
-        }
-    }   
+    }
 }
