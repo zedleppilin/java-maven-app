@@ -30,6 +30,7 @@ pipeline {
                         remote.user = user
                         remote.identityFile = keyfile
                         sh 'ls -l'
+                        sh 'curl ifconfig.me'
                     }
                 }   
             }
