@@ -29,8 +29,8 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
                         remote.user = user
                         remote.identityFile = keyfile
-                        sh 'ls -l'
-                        sh 'curl ifconfig.me'
+                        sh 'pwd'
+                        
                     }
                 }   
             }
