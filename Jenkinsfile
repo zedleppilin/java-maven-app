@@ -28,8 +28,7 @@ pipeline {
 
 
                 
-                    remote.user = user
-                    remote.identityFile = keyfile
+                    
                     sshCommand remote: remote , command : "ls -l"
                     
                 }   
