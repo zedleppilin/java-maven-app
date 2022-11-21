@@ -29,18 +29,10 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
                         remote.user = user
                         remote.identityFile = keyfile
-                        sh 'pwd'
                         
                     }
                 }   
             }
         }
-        stage("check") {
-            steps {
-                script {
-                    echo "copying all neccessary files to ansible control node"
-                    sshagent(['ansible-server-key']){
-                        sh "pwd"}}}}
-
     }
 }
