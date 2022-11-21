@@ -25,7 +25,7 @@ pipeline {
                     remote.host = "3.93.11.42"
                     remote.allowAnyHosts = true
                     remote.user = "ubuntu"
-                    
+                    remote.keyfile = "ubuntu@3.93.11.42:/home/ubuntu/morrowindabyss-key-virginia-us-east-1.pem"
 
 
                 
