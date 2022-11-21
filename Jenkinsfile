@@ -22,12 +22,13 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
                         remote.user = user
                         remote.identityFile = keyfile
-                        sshCommand remote: remote , command : "ls -l"
+                        
                     
                         def remote = [:]
                         remote.name = "ansible-server"
                         remote.host = "3.93.11.42"
-                        remote.allowAnyHosts = true}
+                        remote.allowAnyHosts = true
+                        sshCommand remote: remote , command : "ls -l"}
 
 
                     
