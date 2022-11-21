@@ -40,7 +40,7 @@ pipeline {
                 script {
                     echo "copying all neccessary files to ansible control node"
                     sshagent(['ansible-server-key']){
-                        sh "pwd"}
+                        sh "pwd"}}}}
 
     }
 }
