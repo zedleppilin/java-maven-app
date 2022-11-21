@@ -24,14 +24,13 @@ pipeline {
                     remote.name = "ansible-server"
                     remote.host = "3.93.11.42"
                     remote.allowAnyHosts = true
-                    remote.user = "ubuntu"
-                    remote.keyfile = "/home/ubuntu/morrowindabyss-key-virginia-us-east-1.pem"
 
 
-                
-                    
-                    sshCommand remote: remote , command : "ls -l"
-                    
+                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
+                        remote.user = user
+                        remote.keyFileVariable = keyfile
+                        sshCommand remote: remote , command : "ls -l"
+                    }
                 }   
             }
         }
