@@ -23,12 +23,11 @@ pipeline {
                         remote.user = user
                         remote.identityFile = keyfile
                         sshCommand remote: remote , command : "ls -l"
-                    }
-                    echo "calling ansible playbook to configure ec2 instances "
-                    def remote = [:]
-                    remote.name = "ansible-server"
-                    remote.host = "3.93.11.42"
-                    remote.allowAnyHosts = true
+                    
+                        def remote = [:]
+                        remote.name = "ansible-server"
+                        remote.host = "3.93.11.42"
+                        remote.allowAnyHosts = true}
 
 
                     
