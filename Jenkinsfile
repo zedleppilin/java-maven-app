@@ -35,7 +35,7 @@ pipeline {
                 }   
             }
         }
-        stage("copy files to ansible server") {
+        stage("check") {
             steps {
                 script {
                     echo "copying all neccessary files to ansible control node"
