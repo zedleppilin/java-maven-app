@@ -29,7 +29,8 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "ansible-rsa-gen-key", keyFileVariable: 'identity', usernameVariable: 'userName')]){
                         remote.user = userName
                         remote.identityFile = identity
-                        sshCommand remote: remote, command: "ls -l"
+                           stage("SSH Steps Rocks!") {
+                                 sshCommand remote: remote, command:" ls -l" }
                     }
                 }   
             }
