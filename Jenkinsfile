@@ -26,7 +26,7 @@ pipeline {
                     remote.allowAnyHosts = true
 
 
-                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-private-key", keyFileVariable: 'identity', usernameVariable: 'userName')]){
+                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-server-key", keyFileVariable: 'identity', usernameVariable: 'userName')]){
                         remote.user = userName
                         remote.identityFile = identity
                            stage("SSH Steps Rocks!") {
