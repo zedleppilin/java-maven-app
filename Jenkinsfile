@@ -20,17 +20,19 @@ pipeline {
             steps{
                 script{
                     echo "calling ansible playbook to configure ec2 instances "
+                    
+                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-rsa-gen-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
+                        remote.user = user
+                        remote.identityFile = keyfile
+                        sshCommand remote: remote, command: "ls -l"
+                    }
                     def remote = [:]
                     remote.name = "ansible-server"
                     remote.host = "3.93.11.42"
                     remote.allowAnyHosts = true
 
 
-                    withCredentials([sshUserPrivateKey(credentialsId: "ansible-rsa-gen-key", keyFileVariable: 'keyfile', usernameVariable: 'user')]){
-                        remote.user = user
-                        remote.identityFile = keyfile
-                        sshCommand remote: remote, command: "ls -l"
-                    }
+                    
                 }   
             }
         }
