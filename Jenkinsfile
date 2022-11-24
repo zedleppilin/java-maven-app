@@ -30,7 +30,7 @@ pipeline {
                     remote.user = "ansible"
                     remote.password = "ansible"
                     sshCommand remote: remote, command : "whoami"
-                    sshCommand remote: remote, command : "ansible-playbook my-playbook.yaml --extra-vars "ansible_sudo_pass=under"
+                    sshCommand remote: remote, command : "ansible-playbook my-playbook.yaml --extra-vars 'ansible_sudo_pass=under'"
 
                 
 
