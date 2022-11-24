@@ -7,7 +7,7 @@ pipeline {
                 script {
                     echo "copying all neccessary files to ansible control node"
                     sshagent(['ggwp']){
-                        sh "scp -i ${ggwp} -o StrictHostKeyChecking=no ansible/* ansible@172.16.26.201:/home/ansible"
+                        sh "scp -i /var/lib/jenkins/workspace/ansible/ggwp.rsa -o StrictHostKeyChecking=no ansible/* ansible@172.16.26.201:/home/ansible"
 
                         /*withCredentials(sshUserPrivateKey(credentialsId:'under-ansible',keyFileVariable: 'keyfile',username: 'user ')){
                             sh "scp ${keyfile} ansible@172.16.26.201:/home/ansible/ssh-key.pem "
