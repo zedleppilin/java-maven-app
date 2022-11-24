@@ -27,11 +27,10 @@ pipeline {
                     remote.name = "under-server"
                     remote.host= "172.16.26.201"
                     remote.allowAnyHosts = true
-
-                    withCredentials([sshUserPrivateKey(credentialsId:'under-ansible',keyFileVariable: 'keyfile',usernameVariable: 'user')]){
-                        remote.user= user
-                        sshCommand remote: remote, command : "ls -l"
-                        remote.identityFile = 'keyfile'}
+                    remote.user = "ansible"
+                    remote.password = 'password'
+                    sshCommand remote: remote, command : "ls -l"
+                
 
                 }
             }
