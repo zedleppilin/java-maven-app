@@ -7,7 +7,7 @@
     - name: make sure  Python3 and docker  are installed 
       vars:
         ansible_python_interpreter: /usr/bin/python
-      yum :
+      apt:
         name: 
           - python3
           - docker
