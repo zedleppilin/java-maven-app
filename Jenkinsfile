@@ -29,7 +29,9 @@ pipeline {
                     remote.allowAnyHosts = true
                     remote.user = "ansible"
                     remote.password = "ansible"
-                    sshCommand remote: remote, command : "ls -l"
+                    sshCommand remote: remote, command : "whoami"
+                    sshCommand remote: remote, command : "ansible-playbook my-playbook.yaml"
+
                 
 
                 }
