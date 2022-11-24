@@ -19,5 +19,23 @@ pipeline {
             }   
             
         }
+        stage("execute ansible pb"){
+            steps {
+                script{
+                    echo "calling to configure servers" 
+                    def remote=[:]
+                    remote.name = "under-server"
+                    remote.hosts = "172.16.26.201"
+                    remote.allowAnyHosts = true
+
+                    sshCommand remote: remote, command : "ls -l"
+
+                }
+            }
+
+
+
+    
+        }
     }
 }
