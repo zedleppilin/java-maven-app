@@ -28,7 +28,7 @@ pipeline {
                     remote.host= "172.16.26.201"
                     remote.allowAnyHosts = true
                     remote.user = "ansible"
-                    remote.password = 'password'
+                    remote.password = "ansible"
                     sshCommand remote: remote, command : "ls -l"
                 
 
