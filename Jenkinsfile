@@ -25,11 +25,13 @@ pipeline {
                     echo "calling to configure servers" 
                     def remote=[:]
                     remote.name = "under-server"
-                    remote.hosts = "172.16.26.201"
+                    remote.host= "172.16.26.201"
                     remote.allowAnyHosts = true
-                    remote.user= "ansible"
 
-                    sshCommand remote: remote, command : "ls -l"
+                    withCredentials([sshUserPrivateKey(credentialsId:'under-ansible',keyFileVariable: 'keyfile',usernameVariable: 'user')]){
+                        remote.user= user
+                        sshCommand remote: remote, command : "ls -l"
+                        remote.identityFile = 'keyfile'}
 
                 }
             }
