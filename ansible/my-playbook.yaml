@@ -10,7 +10,7 @@
       apt:
         name: 
           - python3
-          - docker
+          - docker.io
         update_cache : yes 
 
 - name : Install Docker-compose
