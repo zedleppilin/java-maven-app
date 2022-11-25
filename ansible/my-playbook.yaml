@@ -11,6 +11,7 @@
         name: 
           - python3
           - docker.io
+          -  python3-pip
         update_cache : yes 
 
 - name : Install Docker-compose
