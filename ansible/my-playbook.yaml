@@ -6,7 +6,7 @@
   tasks:
     - name: make sure  Python3 and docker  are installed 
       vars:
-        ansible_python_interpreter: /usr/bin/python3
+        ansible_python_interpreter: /usr/bin/python
       apt:
         name: 
           - python3
